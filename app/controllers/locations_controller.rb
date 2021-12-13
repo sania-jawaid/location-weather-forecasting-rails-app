@@ -4,9 +4,9 @@ class LocationsController < ApplicationController
 		@locations = Location.all   
 	end   
 
-	# GET method to get a location by id   
+	# GET method to get a location by slug  
 	def show
-		@location = Location.find_by_slug(params[:slug]) #Location.find(params[:id])   
+		@location = Location.find_by_slug(params[:slug])
 	end   
 
 	# GET method for the new location form   
@@ -26,12 +26,12 @@ class LocationsController < ApplicationController
 		end   
 	end   
 
-	# GET method for editing a location based on id   
+	# GET method for editing a location based on slug   
 	def edit   
 		@location = Location.find_by_slug(params[:slug])   
 	end   
 
-	# PUT method for updating in database a location based on id   
+	# PUT method for updating in database a location based on slug   
 	def update   
 		@location = Location.find_by_slug(params[:slug])   
 		if @location.update(location_params)   
@@ -55,16 +55,22 @@ class LocationsController < ApplicationController
 		end   
 	end   
 
+	# FORECAST method for selecting forecasting options
 	def forecast
 		@location = Location.find_by_slug(params[:location_slug])   
 		render :forecast
 	end
 
+	# FORECAST method for selecting forecasting options
 	def fetch_forecast
 		@location = Location.find_by_slug(params[:location_slug])
-		@response = Weather::Forecast.by_location(@location)
-		redirect_to controller: 'weather_forecasts', action: 'index', location_slug: @location.slug, start_date: params[:start_date].to_date, end_date: params[:end_date].to_date
-
+		unless @location.nil?
+			@response = Weather::Forecast.by_location(@location)
+			redirect_to controller: 'weather_forecasts', action: 'index', location_slug: @location.slug, start_date: params[:start_date], end_date: params[:end_date]
+			return
+		end
+		flash[:error] = 'Location does not exist' 
+		render :forecast
 	end
 
 

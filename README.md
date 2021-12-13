@@ -8,6 +8,7 @@ Things you may want to cover:
 * Ruby version 3.0.3, Rails version 6.1.4.1
 
 * System dependencies mentioned in Gemfile
+* Make sure redis is installed in the system
 
 * Deployment instructions
 
@@ -32,10 +33,10 @@ Things you may want to cover:
 
 
 #URLS
-http://localhost:3000/
-http://localhost:3000/locations
-http://localhost:3000/locations/new
-http://localhost:3000/locations/new-jersey
-http://localhost:3000/locations/new-jersey/edit 
-http://localhost:3000/locations/new-jersey/forecast
-http://localhost:3000/weather_forecasts?end_date=2021-12-15&location_slug=new-jersey&start_date=2021-12-14
+** http://localhost:3000/
+** http://localhost:3000/locations
+** http://localhost:3000/locations/new
+** http://localhost:3000/locations/new-jersey
+** http://localhost:3000/locations/new-jersey/edit 
+** http://localhost:3000/locations/new-jersey/forecast
+** http://localhost:3000/weather_forecasts?end_date=2021-12-15&location_slug=new-jersey&start_date=2021-12-14
