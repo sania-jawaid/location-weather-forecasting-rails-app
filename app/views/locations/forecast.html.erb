@@ -1,0 +1,21 @@
+<%= render "shared/details" %>
+<div class="container">   
+  
+   <h3>Get Historical Forecast</h3>   
+   <p> 
+	<%= form_with url: location_fetch_forecast_path(@location.slug), method: :get do |form| %>
+	<%= form.label :start_date, "Start Date:" %>
+	<%= form.date_field :start_date, class: 'form-control datepicker',required: true %>
+	<%= form.label :end_date, "End Date:" %>
+	<%= form.date_field :end_date, class: 'form-control datepicker',required: true  %>
+	<div>
+		<br/>   
+		<p>
+	      <%= link_to 'Back', { controller: 'locations', action: 'index'} %> 
+	      <%= form.submit 'Fetch Forecast', class: 'btn'%> 
+	     </p>  
+	    </div> 
+	<% end %>
+
+  
+</div> 
