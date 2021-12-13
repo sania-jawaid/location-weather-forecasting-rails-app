@@ -12,7 +12,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
 
 # For Development environment:
 
@@ -40,3 +39,6 @@ Things you may want to cover:
 ** http://localhost:3000/locations/new-jersey/edit 
 ** http://localhost:3000/locations/new-jersey/forecast
 ** http://localhost:3000/weather_forecasts?end_date=2021-12-15&location_slug=new-jersey&start_date=2021-12-14
+
+#For Managing sidekiq
+http://localhost:3000/admin/sidekiq/

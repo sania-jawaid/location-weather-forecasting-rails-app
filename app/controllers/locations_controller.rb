@@ -57,8 +57,13 @@ class LocationsController < ApplicationController
 
 	# FORECAST method for selecting forecasting options
 	def forecast
-		@location = Location.find_by_slug(params[:location_slug])   
-		render :forecast
+		@location = Location.find_by_slug(params[:location_slug])  
+		unless @location.nil? 
+			render :forecast
+			return
+		end
+		flash[:error] = 'Location does not exist' 
+		redirect_to '/'
 	end
 
 	# FORECAST method for selecting forecasting options
@@ -70,7 +75,7 @@ class LocationsController < ApplicationController
 			return
 		end
 		flash[:error] = 'Location does not exist' 
-		render :forecast
+		redirect_to '/'
 	end
 
 
